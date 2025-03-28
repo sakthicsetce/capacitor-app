@@ -68,7 +68,9 @@
       {
         "from": "resources",
         "to": "resources",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ],
     "publish": [
@@ -80,12 +82,18 @@
       }
     ],
     "win": {
-      "target": ["nsis", "zip"],
+      "target": [
+        "nsis",
+        "zip"
+      ],
       "icon": "assets/appIcon.ico"
     },
     "mac": {
       "category": "public.app-category.utilities",
-      "target": ["dmg", "zip"],
+      "target": [
+        "dmg",
+        "zip"
+      ],
       "icon": "assets/appIcon.icns",
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
@@ -103,12 +111,25 @@
       "iconSize": 80,
       "iconTextSize": 12,
       "contents": [
-        { "x": 130, "y": 220, "type": "file" },
-        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+        {
+          "x": 130,
+          "y": 220,
+          "type": "file"
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
       ]
     },
     "linux": {
-      "target": ["AppImage", "deb", "rpm"],
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
       "category": "Utility",
       "icon": "assets/linux-icon.png",
       "description": "Capacitor App - A cross-platform Electron app"
