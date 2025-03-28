@@ -1,0 +1,79 @@
+{
+  "appId": "com.muoooum.viyu",
+  "productName": "Viyu",
+  "directories": {
+    "output": "dist",
+    "buildResources": "resources"
+  },
+  "files": [
+    "assets/**/*",
+    "build/**/*",
+    "capacitor.config.*",
+    "app/**/*",
+    "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "resources",
+      "to": "resources",
+      "filter": ["**/*"]
+    }
+  ],
+  "publish": [
+    {
+      "provider": "github",
+      "repo": "viyu-electron",
+      "owner": "muoooum",
+      "releaseType": "draft"
+    }
+  ],
+  "win": {
+    "target": ["nsis", "zip"],
+    "icon": "assets/appIcon.ico",
+    "requestedExecutionLevel": "asInvoker",
+    "verifyUpdateCodeSignature": false
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Viyu"
+  },
+  "mac": {
+    "category": "public.app-category.social-networking",
+    "target": ["dmg", "zip"],
+    "icon": "assets/appIcon.icns",
+    "hardenedRuntime": true,
+    "gatekeeperAssess": false,
+    "entitlements": "resources/entitlements.mac.plist",
+    "entitlementsInherit": "resources/entitlements.mac.plist",
+    "extendInfo": {
+      "NSCameraUsageDescription": "This app requires access to the camera.",
+      "NSMicrophoneUsageDescription": "This app requires access to the microphone.",
+      "NSDocumentsFolderUsageDescription": "This app requires access to your documents."
+    },
+    "notarize": false,
+    "identity": "468E23DE989B1AADB48C3B4A9626874076A72509"
+  },
+  "dmg": {
+    "sign": false,
+    "background": "resources/dmg-background.png",
+    "iconSize": 80,
+    "iconTextSize": 12,
+    "contents": [
+      { "x": 130, "y": 220, "type": "file" },
+      { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+    ]
+  },
+  "linux": {
+    "target": ["AppImage", "deb", "rpm"],
+    "category": "Network",
+    "icon": "assets/linux-icon.png",
+    "maintainer": "Viyu Support <support@viyu.com>",
+    "description": "Viyu - The Next-Gen Chat App"
+  },
+  "electronVersion": "28.2.5"
+}

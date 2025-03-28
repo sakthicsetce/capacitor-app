@@ -1,0 +1,118 @@
+{
+  "name": "capacitor-app",
+  "version": "1.0.0",
+  "description": "An Amazing Capacitor App with Electron",
+  "author": {
+    "name": "Your Name",
+    "email": "your-email@example.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/capacitor-app.git"
+  },
+  "license": "MIT",
+  "main": "build/src/index.js",
+  "scripts": {
+    "clean": "rm -rf dist node_modules && npm install",
+    "build": "tsc && electron-rebuild",
+    "start": "npm run build && electron .",
+    "start:dev": "tsc && electron . --inspect=5858",
+    "electron:start-live": "node ./live-runner.js",
+    "electron:pack": "npm run build && electron-builder build --dir",
+    "electron:make": "npm run build && electron-builder build -p always",
+    "build:win": "npm run build && electron-builder --win",
+    "build:mac": "npm run build && electron-builder --mac",
+    "build:linux": "npm run build && electron-builder --linux",
+    "build:all": "npm run build && electron-builder --win --mac --linux"
+  },
+  "dependencies": {
+    "@capacitor-community/electron": "^5.0.0",
+    "chokidar": "~3.5.3",
+    "electron-is-dev": "~2.0.0",
+    "electron-serve": "~1.1.0",
+    "electron-unhandled": "~4.0.1",
+    "electron-updater": "^6.6.2",
+    "electron-window-state": "^5.0.3"
+  },
+  "devDependencies": {
+    "electron": "^35.1.2",
+    "electron-builder": "^26.0.12",
+    "electron-rebuild": "^3.2.9",
+    "typescript": "^5.8.2"
+  },
+  "keywords": [
+    "capacitor",
+    "electron",
+    "cross-platform",
+    "desktop-app"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "build": {
+    "appId": "com.yourcompany.capacitorapp",
+    "productName": "CapacitorApp",
+    "directories": {
+      "output": "dist",
+      "buildResources": "resources"
+    },
+    "files": [
+      "assets/**/*",
+      "build/**/*",
+      "capacitor.config.*",
+      "app/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "resources",
+        "filter": ["**/*"]
+      }
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "repo": "capacitor-app",
+        "owner": "your-github-username",
+        "releaseType": "draft"
+      }
+    ],
+    "win": {
+      "target": ["nsis", "zip"],
+      "icon": "assets/appIcon.ico"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": ["dmg", "zip"],
+      "icon": "assets/appIcon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "resources/entitlements.mac.plist",
+      "entitlementsInherit": "resources/entitlements.mac.plist",
+      "extendInfo": {
+        "NSCameraUsageDescription": "This app requires access to the camera.",
+        "NSMicrophoneUsageDescription": "This app requires access to the microphone."
+      },
+      "notarize": false
+    },
+    "dmg": {
+      "sign": true,
+      "background": "resources/dmg-background.png",
+      "iconSize": 80,
+      "iconTextSize": 12,
+      "contents": [
+        { "x": 130, "y": 220, "type": "file" },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ]
+    },
+    "linux": {
+      "target": ["AppImage", "deb", "rpm"],
+      "category": "Utility",
+      "icon": "assets/linux-icon.png",
+      "description": "Capacitor App - A cross-platform Electron app"
+    },
+    "electronVersion": "35.1.2"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "appId": "com.muoooum.viyu",
+  "appName": "capacitor",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
